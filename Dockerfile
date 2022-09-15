@@ -5,4 +5,3 @@ COPY /nginx.conf /etc/nginx/nginx.conf
 
 # Copy source
 COPY /src /src
-ERR
