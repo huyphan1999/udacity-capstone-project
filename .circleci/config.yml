@@ -82,7 +82,7 @@ workflows:
     jobs:
       - validate-app
       - scan-dockerfile:
-          requires: [test-app]
+          requires: [validate-app]
       - build-docker:
           requires: [scan-dockerfile]
       - deploy:
