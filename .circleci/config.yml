@@ -34,15 +34,8 @@ jobs:
   build-docker:
     docker:
       - image: cimg/node:16.15.1
-        auth:
-          username: $DOCKER_USER
-          password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
-      - run:
-          name: Log docker info
-          command: |
-            docker info
       - docker/check
       - docker/build:
           image: udacity-capstone-project
