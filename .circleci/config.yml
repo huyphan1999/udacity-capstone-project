@@ -52,6 +52,10 @@ jobs:
           image: udacity-capstone-project
           registry: 'vuachicken6'
           tag: "${CIRCLE_WORKFLOW_ID:0:7}"
+      - docker/build:
+          image: udacity-capstone-project
+          registry: 'vuachicken6'
+          tag: "latest"
       - docker/push:
           image: udacity-capstone-project
           registry: 'vuachicken6'
