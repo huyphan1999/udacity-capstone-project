@@ -33,16 +33,10 @@ jobs:
   
   build-docker:
     docker:
-      - image: cimg/node:16.15.1
+      - image: docker
     steps:
       - checkout
       - docker/check
-      - docker/install-docker
-      - run:
-          name: start docker daemon
-          command: |
-            sudo systemctl start docker
-            sudo systemctl enable docker
       - docker/build:
           image: udacity-capstone-project
           tag: "${CIRCLE_WORKFLOW_ID:0:7}"
