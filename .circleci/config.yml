@@ -39,14 +39,16 @@ jobs:
           password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
+      - run:
+          name: Log docker info
+          command: |
+            docker info
       - docker/check
       - docker/build:
           image: udacity-capstone-project
-          registry: "${DOCKER_USER}"
           tag: "${CIRCLE_WORKFLOW_ID:0:7}"
       - docker/push:
           digest-path: /tmp/digest.txt
-          registry: "${DOCKER_USER}"
           image: udacity-capstone-project
           tag: "${CIRCLE_WORKFLOW_ID:0:7}"
       - run:
