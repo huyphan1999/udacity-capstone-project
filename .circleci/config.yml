@@ -33,17 +33,24 @@ jobs:
   
   build-docker:
     docker:
-      - image: cimg/base:stable
+      - image: cimg/node:16.15.1
+        auth:
+          username: $DOCKER_USER
+          password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
-      - docker/install-docker
+      - setup_remote_docker:
+          version: 20.10.14
+          docker_layer_caching: true
       - docker/check
       - docker/build:
           image: udacity-capstone-project
+          registry: 'vuachicken6'
           tag: "${CIRCLE_WORKFLOW_ID:0:7}"
       - docker/push:
           digest-path: /tmp/digest.txt
           image: udacity-capstone-project
+          registry: 'vuachicken6'
           tag: "${CIRCLE_WORKFLOW_ID:0:7}"
       - run:
           command: |
