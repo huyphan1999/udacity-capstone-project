@@ -11,8 +11,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name : Validate app content
           command: |
-            npm i html-validator-cli -g
+            sudo npm i html-validator-cli -g
             sudo html-validator --file=src/index.html
   
   scan-dockerfile:
