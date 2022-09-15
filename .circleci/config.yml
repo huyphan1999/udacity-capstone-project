@@ -87,4 +87,4 @@ workflows:
           requires: [scan-dockerfile]
       - deploy:
           cluster-name: 'udacity-capstone-project'
-          requires: [build-docker-app]
+          requires: [build-docker]
