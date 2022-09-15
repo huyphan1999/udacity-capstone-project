@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: udacity-capstone-project
+  name: udacity-capstone-project
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: udacity-capstone-project
+  template:
+    metadata:
+      labels:
+        app: udacity-capstone-project
+        role: RollingUpdate
+    spec:
+      containers:
+        - image: vuachicken6/udacity-capstone-project:latest
+          name: udacity-capstone-image
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+      restartPolicy: Always
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: udacity-capstone-project
+  name: udacity-capstone-project
+spec:
+  type: LoadBalancer
+  selector:
+    app: udacity-capstone-project
+  ports:
+    - name: "8080"
+      port: 8080
+      targetPort: 80
+      protocol: TCP
