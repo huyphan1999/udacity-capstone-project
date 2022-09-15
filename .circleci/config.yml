@@ -37,6 +37,7 @@ jobs:
     steps:
       - checkout
       - docker/check
+      - docker/install-docker
       - docker/build:
           image: udacity-capstone-project
           tag: "${CIRCLE_WORKFLOW_ID:0:7}"
