@@ -13,7 +13,7 @@ jobs:
       - run:
           command: |
             npm i html-validator-cli -g
-            html-validator --file=src/index.html
+            sudo html-validator --file=src/index.html
   
   scan-dockerfile:
     docker:
