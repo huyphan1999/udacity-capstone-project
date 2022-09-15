@@ -33,9 +33,10 @@ jobs:
   
   build-docker:
     docker:
-      - image: docker
+      - image: cimg/base:stable
     steps:
       - checkout
+      - docker/install-docker
       - docker/check
       - docker/build:
           image: udacity-capstone-project
